@@ -1,0 +1,651 @@
+:root {
+    --primary-font: 'Poppins', sans-serif;
+    --text-color: #333;
+    --text-color-light: #fff;
+    --glass-bg: rgba(255, 255, 255, 0.2);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --accent-color: #ff6b6b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--primary-font);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    position: relative;
+    color: var(--text-color);
+}
+
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Formal Dark Weather Theme */
+    background: radial-gradient(circle at center, #1a2a6c, #b21f1f, #fdbb2d);
+    /* Fallback */
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    /* Deep Deep Blue */
+    z-index: -2;
+}
+
+/* Rotating Earth Animation (CSS Wireframe) */
+.earth-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    z-index: -1;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.earth {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.5));
+    box-shadow: 0 0 50px rgba(79, 172, 254, 0.2), inset 0 0 20px rgba(79, 172, 254, 0.2);
+    position: relative;
+    animation: pulseGlow 5s infinite alternate;
+}
+
+.earth::before,
+.earth::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+}
+
+/* Longitude/Latitude Lines Simulation */
+.earth-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: rotateEarth 60s linear infinite;
+    transform-style: preserve-3d;
+}
+
+.earth-line {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+}
+
+/* Equator */
+.earth-line:nth-child(1) {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: rotateX(75deg);
+}
+
+.earth-line:nth-child(2) {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: rotateX(75deg) rotateY(45deg);
+}
+
+.earth-line:nth-child(3) {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: rotateX(75deg) rotateY(90deg);
+}
+
+.earth-line:nth-child(4) {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transform: rotateX(75deg) rotateY(135deg);
+}
+
+@keyframes rotateEarth {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulseGlow {
+    from {
+        box-shadow: 0 0 30px rgba(79, 172, 254, 0.1);
+    }
+
+    to {
+        box-shadow: 0 0 60px rgba(79, 172, 254, 0.3);
+    }
+}
+
+/* Header */
+.glass-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Sections & Transitions */
+.app-section {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+.app-section.hidden {
+    display: none;
+}
+
+/* Favorites Button */
+.weather-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    position: relative;
+}
+
+.save-btn {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+    transform: scale(1.1);
+    color: #ff6b6b;
+}
+
+.save-btn.saved i {
+    font-weight: 900;
+    /* fa-solid */
+    color: #ff6b6b;
+}
+
+/* Saved List */
+.saved-list {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.saved-item {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.saved-item:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.saved-item span {
+    font-weight: 600;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: #d32f2f;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px;
+}
+
+.empty-msg {
+    text-align: center;
+    opacity: 0.7;
+    margin-top: 20px;
+}
+
+/* Settings */
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.unit-btn {
+    background: var(--accent-color);
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--primary-font);
+    transition: transform 0.2s ease;
+}
+
+.unit-btn:hover {
+    transform: scale(1.05);
+}
+
+/* About Overlay */
+.about-card {
+    text-align: center;
+}
+
+.about-card p {
+    margin: 10px 0;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #333;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-color);
+}
+
+.menu-btn {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    z-index: 200;
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.sidebar-header h3 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.sidebar-header button {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+}
+
+.sidebar-links {
+    list-style: none;
+}
+
+.sidebar-links li {
+    margin-bottom: 20px;
+}
+
+.sidebar-links a {
+    text-decoration: none;
+    color: #555;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.sidebar-links a:hover,
+.sidebar-links a.active {
+    background: var(--accent-color);
+    color: #fff;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 150;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+}
+
+.overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    /* Increased max-width slightly */
+    padding: 20px;
+    z-index: 1;
+    margin-top: 80px;
+    /* Space for fixed header */
+}
+
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+}
+
+/* Search Box */
+.search-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.search-box i {
+    color: #555;
+    margin-right: 10px;
+}
+
+.search-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    flex-grow: 1;
+    font-size: 1rem;
+    font-family: var(--primary-font);
+    color: #333;
+}
+
+.search-box button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.search-box button:hover {
+    color: var(--accent-color);
+}
+
+/* Quick Access Chips */
+.quick-access {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+.chip {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.chip:hover {
+    background: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+    border-color: #fff;
+}
+
+.error-msg {
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Weather Display */
+.weather-container {
+    animation: slideUpFade 0.8s ease forwards;
+}
+
+.hidden {
+    display: none;
+}
+
+.current-weather {
+    text-align: center;
+    color: var(--text-color);
+}
+
+.weather-header h2 {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.weather-header p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.weather-main {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-icon i {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    color: #fff;
+    /* Icon color can be dynamic */
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.temperature h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.temperature p {
+    font-size: 1.2rem;
+    text-transform: capitalize;
+    margin-top: 5px;
+}
+
+/* Grid Layout for details */
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.property-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 0;
+    /* Override default margin */
+}
+
+.property-card i {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.property-value {
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: block;
+}
+
+.property-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* Animations */
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Loader */
+.loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .temperature h1 {
+        font-size: 3rem;
+    }
+
+    .property-grid {
+        grid-template-columns: 1fr;
+        /* Or keep 3 columns but make font smaller? 
+           Let's try 3 columns still, it usually fits on mobile for icons.
+           Actually, grid-template-columns: repeat(3, 1fr) works fine down to 320px usually.
+           Let's stick to 3 columns but reduce gaps if needed.
+        */
+        gap: 10px;
+    }
+}

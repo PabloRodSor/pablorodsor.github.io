@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Acerca de Weather Dashboard Pro - Conoce más sobre nuestra aplicación meteorológica.">
+    <meta name="keywords" content="clima, acerca de, weather, app, información">
+    <meta name="author" content="Weather Dashboard Pro Team">
+    <meta name="robots" content="index, follow">
+
+    <title>Acerca De | Weather Dashboard Pro</title>
+
+    <!-- Google Analytics Placeholder -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <!-- Rotating Earth Background -->
+    <div class="earth-container">
+        <div class="earth">
+            <div class="earth-lines">
+                <div class="earth-line"></div>
+                <div class="earth-line"></div>
+                <div class="earth-line"></div>
+                <div class="earth-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="glass-header">
+        <div class="logo">
+            <i class="fa-solid fa-cloud-sun-rain" aria-hidden="true"></i> WeatherApp
+        </div>
+        <button id="menu-btn" class="menu-btn" aria-label="Abrir menú de navegación">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav aria-label="Navegación principal">
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menú</h3>
+                <button id="close-sidebar" aria-label="Cerrar menú"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="index.html" class="nav-link-external" title="Inicio"><i class="fa-solid fa-house" aria-hidden="true"></i> Inicio</a></li>
+                <li><a href="about.html" class="nav-link active" title="Acerca de nosotros"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Acerca de</a></li>
+                <li><a href="contact.html" class="nav-link-external" title="Contacto"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contacto</a></li>
+            </ul>
+        </aside>
+    </nav>
+    <div id="overlay" class="overlay hidden"></div>
+
+    <main class="container">
+        <!-- SECTION: ABOUT -->
+        <section id="about-section" class="app-section">
+            <div class="glass-card about-card">
+                <h2><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Acerca de</h2>
+                <p>Weather Dashboard Pro v1.0</p>
+                <p>Desarrollado con ❤️ usando HTML5, CSS3 Glassmorphism y JS Vanilla.</p>
+                <p>Datos proporcionados por OpenWeatherMap.</p>
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar nuestro perfil de GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="Visitar nuestro perfil de LinkedIn"><i class="fa-brands fa-linkedin" aria-hidden="true"></i></a>
+                    <a href="mailto:info@weatherapp.com" target="_blank" rel="noopener noreferrer" aria-label="Enviar un correo electrónico"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            
+            <!-- Banner Publicitario Bottom -->
+            <div class="ad-banner glass-card" style="margin-top: 20px" aria-label="Espacio publicitario inferior">
+                <span class="ad-label">Publicidad</span>
+                <p>Tu Banner Publicitario Aquí</p>
+                <!-- Aquí iría el script de Adsense -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Chatbot Tawk.to Embedded Code -->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6500000placeholder/default';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

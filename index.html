@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Weather Dashboard Pro - Consulta el clima actual, pronóstico y guarda tus ciudades favoritas. Aplicación del clima funcional y profesional.">
+    <meta name="keywords" content="clima, weather, pronóstico, meteorología, tiempo actual, dashboard, aplicación del clima">
+    <meta name="author" content="Weather Dashboard Pro Team">
+    <meta name="robots" content="index, follow">
+
+    <!-- Bing Webmaster Tools Verification -->
+    <meta name="msvalidate.01" content="A_PLACEHOLDER_BING_VERIFICATION_CODE" />
+
+    <!-- Open Graph (LinkedIn, Facebook, etc.) -->
+    <meta property="og:title" content="Weather Dashboard Pro">
+    <meta property="og:description" content="Consulta el clima actual y guarda tus ciudades favoritas con esta aplicación profesional del tiempo.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tu-dominio.com/">
+    <meta property="og:image" content="https://tu-dominio.com/banner-og.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Weather Dashboard Pro">
+    <meta name="twitter:description" content="Consulta el clima actual y guarda tus ciudades con nuestra aplicación.">
+
+    <title>Weather Dashboard Pro | El Clima Actual</title>
+
+    <!-- Google Analytics Placeholder -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <!-- Rotating Earth Background -->
+    <div class="earth-container">
+        <div class="earth">
+            <div class="earth-lines">
+                <div class="earth-line"></div>
+                <div class="earth-line"></div>
+                <div class="earth-line"></div>
+                <div class="earth-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="glass-header">
+        <div class="logo">
+            <i class="fa-solid fa-cloud-sun-rain" aria-hidden="true"></i> WeatherApp
+        </div>
+        <button id="menu-btn" class="menu-btn" aria-label="Abrir menú de navegación">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+    </header>
+
+    <!-- Sidebar Navigation -->
+    <nav aria-label="Navegación principal">
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menú</h3>
+                <button id="close-sidebar" aria-label="Cerrar menú"><i class="fa-solid fa-xmark" aria-hidden="true"></i></button>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="index.html" class="nav-link active" data-target="home-section" title="Inicio"><i class="fa-solid fa-house" aria-hidden="true"></i>
+                        Inicio</a></li>
+                <li><a href="#" class="nav-link" data-target="saved-section" title="Ciudades guardadas"><i class="fa-solid fa-heart" aria-hidden="true"></i> Guardados</a>
+                </li>
+                <li><a href="#" class="nav-link" data-target="settings-section" title="Configuración de la app"><i class="fa-solid fa-gear" aria-hidden="true"></i>
+                        Configuración</a></li>
+                <li><a href="about.html" class="nav-link-external" title="Acerca de nosotros"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> Acerca
+                        de</a></li>
+                <li><a href="contact.html" class="nav-link-external" title="Contacto"><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contacto</a></li>
+            </ul>
+        </aside>
+    </nav>
+    <div id="overlay" class="overlay hidden"></div>
+
+    <main class="container">
+
+        <!-- SECTION: HOME -->
+        <section id="home-section" class="app-section">
+
+            <!-- Banner Publicitario Top -->
+            <div class="ad-banner glass-card" aria-label="Espacio publicitario superior">
+                <span class="ad-label">Publicidad</span>
+                <p>Tu Banner Publicitario Aquí</p>
+                <!-- Aquí iría el script de Adsense -->
+            </div>
+
+            <div class="glass-card search-card">
+                <div class="search-box">
+                    <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+                    <input type="text" id="city-input" placeholder="Buscar ciudad..." aria-label="Campo de búsqueda de ciudad">
+                    <button id="search-btn" aria-label="Buscar clima de la ciudad"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></button>
+                </div>
+
+                <!-- Quick Access Chips -->
+                <div class="quick-access">
+                    <span class="chip" data-city="Madrid">Madrid</span>
+                    <span class="chip" data-city="Barcelona">Barcelona</span>
+                    <span class="chip" data-city="Londres">Londres</span>
+                    <span class="chip" data-city="Nueva York">Nueva York</span>
+                    <span class="chip" data-city="Tokio">Tokio</span>
+                </div>
+
+                <p id="error-message" class="error-msg"></p>
+            </div>
+
+            <div id="weather-container" class="weather-container hidden">
+                <div class="glass-card current-weather">
+                    <div class="weather-header">
+                        <h2 id="city-name">Madrid, ES</h2>
+                        <button id="save-btn" class="save-btn" aria-label="Guardar ciudad"><i class="fa-regular fa-heart" aria-hidden="true"></i></button>
+                    </div>
+                    <p id="date">Lunes, 10 Feb 2026</p>
+                    <div class="weather-main">
+                        <div class="weather-icon">
+                            <i id="weather-icon-i" class="fa-solid fa-sun"></i>
+                        </div>
+                        <div class="temperature">
+                            <h1 id="temp">22°C</h1>
+                            <p id="description">Cielo despejado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-grid">
+                    <div class="glass-card property-card">
+                        <i class="fa-solid fa-droplet"></i>
+                        <div class="property-info">
+                            <span class="property-value" id="humidity">45%</span>
+                            <span class="property-label">Humedad</span>
+                        </div>
+                    </div>
+                    <div class="glass-card property-card">
+                        <i class="fa-solid fa-wind"></i>
+                        <div class="property-info">
+                            <span class="property-value" id="wind">12 km/h</span>
+                            <span class="property-label">Viento</span>
+                        </div>
+                    </div>
+                    <div class="glass-card property-card">
+                        <i class="fa-solid fa-temperature-three-quarters"></i>
+                        <div class="property-info">
+                            <span class="property-value" id="feels-like">24°C</span>
+                            <span class="property-label">Sensación</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="loader" class="loader hidden">
+                <div class="spinner"></div>
+            </div>
+        </section>
+
+        <!-- SECTION: SAVED CITIES -->
+        <section id="saved-section" class="app-section hidden">
+            <div class="glass-card">
+                <h2><i class="fa-solid fa-heart"></i> Ciudades Guardadas</h2>
+                <div id="saved-list" class="saved-list">
+                    <p class="empty-msg">No tienes ciudades guardadas aún.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: SETTINGS -->
+        <section id="settings-section" class="app-section hidden">
+            <div class="glass-card">
+                <h2><i class="fa-solid fa-gear"></i> Configuración</h2>
+                <div class="setting-item">
+                    <span>Unidad de temperatura</span>
+                    <button id="unit-toggle" class="unit-btn">
+                        <span id="unit-label">Celsius (°C)</span>
+                        <i class="fa-solid fa-repeat"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Chatbot Tawk.to Embedded Code -->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/6500000placeholder/default'; /* Cambiar id por uno de tawk.to real */
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!-- End Tawk.to Embedded Code -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>
