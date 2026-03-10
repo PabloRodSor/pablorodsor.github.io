@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- SEO Meta Tags -->
+    <title>Contacto | Weather Dashboard Pro</title>
+    <meta name="description" content="Contacta con el equipo de Weather Dashboard Pro. Resolveremos tus dudas rápidamente.">
+    <meta name="keywords" content="contacto, soporte, ayuda, clima, weather, preguntar clima">
+    <meta name="author" content="Weather Dashboard Pro Team">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <link rel="canonical" href="https://tu-dominio.com/contact.html">
+
+    <!-- Color de Tema y Favicon para PWA/Mobile -->
+    <meta name="theme-color" content="#1a2a6c">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌤️</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌤️</text></svg>">
+
+    <!-- Schema.org JSON-LD para SEO Técnico Avanzado -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contacto - Weather Dashboard Pro",
+      "description": "Contacta con el equipo de Weather Dashboard Pro. Resolveremos tus dudas rápidamente.",
+      "url": "https://tu-dominio.com/contact.html"
+    }
+    </script>
+
+    <!-- Open Graph Base -->
+    <meta property="og:title" content="Contacto | Weather Dashboard Pro">
+    <meta property="og:description" content="Contacta con el equipo de Weather Dashboard Pro.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Weather Dashboard Pro">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Google Analytics Placeholder -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.2);
+            font-family: var(--primary-font);
+            color: var(--text-color);
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(51, 51, 51, 0.7);
+        }
+
+        .contact-form button {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .contact-form button:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <div class="earth-container">
+        <div class="earth">
+            <div class="earth-lines">
+                <div class="earth-line"></div>
+                <div class="earth-line"></div>
+                <div class="earth-line"></div>
+                <div class="earth-line"></div>
+            </div>
+        </div>
+    </div>
+
+    <header class="glass-header">
+        <div class="logo">
+            <i class="fa-solid fa-cloud-sun-rain" aria-hidden="true"></i> WeatherApp
+        </div>
+        <button id="menu-btn" class="menu-btn" aria-label="Abrir menú de navegación">
+            <i class="fa-solid fa-bars" aria-hidden="true"></i>
+        </button>
+    </header>
+
+    <nav aria-label="Navegación principal">
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h3>Menú</h3>
+                <button id="close-sidebar" aria-label="Cerrar menú"><i class="fa-solid fa-xmark"
+                        aria-hidden="true"></i></button>
+            </div>
+            <ul class="sidebar-links">
+                <li><a href="index.html" class="nav-link-external" title="Inicio"><i class="fa-solid fa-house"
+                            aria-hidden="true"></i> Inicio</a></li>
+                <li><a href="about.html" class="nav-link-external" title="Acerca de nosotros"><i
+                            class="fa-solid fa-circle-info" aria-hidden="true"></i> Acerca de</a></li>
+                <li><a href="contact.html" class="nav-link active" title="Contacto"><i class="fa-solid fa-envelope"
+                            aria-hidden="true"></i> Contacto</a></li>
+            </ul>
+        </aside>
+    </nav>
+    <div id="overlay" class="overlay hidden"></div>
+
+    <main class="container">
+        <!-- H1 estructuralmente necesario y escondido visualmente si es redundante a H2 -->
+        <h1 class="sr-only">Página de Contacto de Weather Dashboard Pro</h1>
+        
+        <section id="contact-section" class="app-section">
+            <div class="glass-card">
+                <h2><i class="fa-solid fa-envelope" aria-hidden="true"></i> Contacto</h2>
+                <p>Déjanos tu mensaje y te responderemos a la brevedad.</p>
+                <form class="contact-form" onsubmit="event.preventDefault(); alert('Mensaje enviado (simulación)');">
+                    <label for="name" class="sr-only">Nombre completo</label>
+                    <input type="text" id="name" placeholder="Tu Nombre" required aria-required="true" aria-label="Ingresa tu nombre" autocomplete="name">
+
+                    <label for="email" class="sr-only">Correo electrónico</label>
+                    <input type="email" id="email" placeholder="Tu Correo" required aria-required="true" aria-label="Ingresa tu correo" autocomplete="email">
+
+                    <label for="message" class="sr-only">Mensaje</label>
+                    <textarea id="message" rows="4" placeholder="Tu Mensaje" required aria-required="true"
+                        aria-label="Ingresa tu mensaje" autocomplete="off"></textarea>
+
+                    <button type="submit">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- INICIO: Chatbot Integrado -->
+    <div class="chatbot-container">
+        <!-- Botón flotante -->
+        <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Abrir asistente de clima">
+            <i class="fa-solid fa-message"></i>
+        </button>
+
+        <!-- Ventana del Chat -->
+        <div id="chatbot-window" class="chatbot-window hidden glass-card">
+            <div class="chatbot-header">
+                <h3><i class="fa-solid fa-robot"></i> Asistente</h3>
+                <button id="chatbot-close" aria-label="Cerrar chat"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="chat-msg bot-msg">
+                    <p>¡Hola! Soy tu asistente meteorológico. Además de rellenar el formulario de contacto, puedes preguntarme directamente aquí tus dudas.</p>
+                </div>
+            </div>
+            <div class="chatbot-input-container">
+                <label for="chatbot-input" class="sr-only">Escribe tu pregunta al asistente</label>
+                <input type="text" id="chatbot-input" placeholder="Escribe tu duda aquí...">
+                <button id="chatbot-send" aria-label="Enviar mensaje"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- FIN: Chatbot Integrado -->
+
+    <script src="script.js" defer></script>
+</body>
+
+</html>
